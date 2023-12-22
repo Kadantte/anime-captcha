@@ -1,40 +1,10 @@
-<script lang="ts" context="module">
-  import type { Load } from "@sveltejs/kit";
-
-  import { dev } from "$app/env";
-  import type { CaptchaGetAll } from "$data/model";
-  import type { Insight } from "$types";
-
-  export const prerender = false;
-
-  export const load: Load = async ({ fetch }) => {
-    if (!dev)
-      return {
-        status: 403,
-        error: "You shall not pass! Debug is only available in Debug",
-      };
-
-    const [_data, _insight] = await Promise.all([
-      fetch("/api/getall"),
-      fetch("/api/insight"),
-    ]);
-
-    const [data, insight] = await Promise.all([_data.json(), _insight.json()]);
-
-    return {
-      props: {
-        data: data as CaptchaGetAll,
-        insight: insight as Insight,
-      },
-    };
-  };
-</script>
-
 <script lang="ts">
   import Label from "$components/Label.svelte";
 
-  export let data: CaptchaGetAll;
-  export let insight: Insight;
+  import type { PageData } from "./$types";
+
+  export let data: PageData;
+  $: ({ captchaData, insight } = data);
 
   function I(cate: string) {
     return insight.categories[cate];
@@ -44,7 +14,7 @@
 <div class="premium-font my-10 flex flex-col gap-4">
   <h1>Insight created at {insight.created_at}</h1>
 
-  {#each Object.entries(data) as [cate, captcha]}
+  {#each Object.entries(captchaData) as [cate, captcha]}
     <h2 class="mt-10">Category: {cate}</h2>
     <table class="captcha-table">
       <thead>

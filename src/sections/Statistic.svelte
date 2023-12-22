@@ -17,8 +17,8 @@
 
   $: {
     winCount = filteredPlay.reduce(
-      (prev, curr) => (curr.score == 16 ? prev + 1 : prev),
-      0
+      (prev, curr) => (curr.score === 16 ? prev + 1 : prev),
+      0,
     );
     avgScore =
       filteredPlay.reduce((prev, curr) => curr.score + prev, 0) /
@@ -28,24 +28,27 @@
   let filter = 0;
   const allFilters = [1, 7, 14, 30, 0] as const;
 
-  function changeFilter(day: typeof allFilters[number]) {
+  function changeFilter(day: (typeof allFilters)[number]) {
     filter = day;
     filteredPlay = allPlay.filter(
       (p) =>
         !day ||
         new Date().getTime() - new Date(p.submission_time).getTime() <
-          day * 24 * 60 * 60 * 1000
+          day * 24 * 60 * 60 * 1000,
     );
   }
 </script>
 
-<section class="{styles.mainCard} premium-font mt-12 pb-6">
+<section class="{styles.mainCard} premium-font mt-6 pb-6">
   <h1 class="pt-6">Statistics</h1>
   <hr />
 
   <div class="btn-group flex max-w-[90%] flex-row justify-center rounded-xl">
     {#each allFilters as day}
-      <button class:selected={filter == day} on:click={() => changeFilter(day)}>
+      <button
+        class:selected={filter === day}
+        on:click={() => changeFilter(day)}
+      >
         {day ? `Last ${day} days` : "All Time"}
       </button>
     {/each}

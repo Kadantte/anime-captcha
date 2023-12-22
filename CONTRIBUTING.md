@@ -2,6 +2,8 @@
 
 You can add/remove question at src/data/[category].json
 
+_You can literally add any character you want, however I can decide to merge it or not :trollface:_
+
 **Schema of JSON**: See [src/data/model.ts](src/data/model.ts)
 for how JSON File should look like and edit them in src/data
 
@@ -14,6 +16,8 @@ prefer the english name order to be the same as written in Japanese
 
 ミカサ・アッカーマン -> Mikasa Ackerman
 
+アーニャ・フォージャー -> Anya Forger
+
 ## Exception can be made for some cases
 
 保登心愛 -> Hoto Cocoa (Instead of Hoto Kokoa)
@@ -24,8 +28,7 @@ prefer the english name order to be the same as written in Japanese
 
 Make sure it is usable, Pictures from Wikipedia likely can't be displayed
 
-If you are able to run it locally (which you need vercel account and project to do that)
-There is Debug Tools to check if photos are displaying correctly
+Run locally and visit /debug to check if all picture works. (Warning: This reveals all the answer)
 
 ### Custom Image
 

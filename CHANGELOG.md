@@ -1,6 +1,31 @@
 # Changelog
 
-All change except updating data will be noted here
+All notable change except updating data will be noted here
+
+## [1.8.166] - 2023-09-25
+
+- chore: bump deps
+
+## [1.7.165] - 2022-12-25
+
+- chore: bump deps (as always)
+- feat: Super Idol now replaced by ???
+- a11y: Not a robot checkbox is changed from input to button
+
+## [1.6.164] - 2022-12-14
+
+- chore: bump deps
+- feat: Deployed to Edge
+- refactor: clean code, fix a11y
+
+## [1.5.162] - 2022-09-17
+
+- Bump Dependencies
+- Fixed an issues that PWA does not work
+
+## [1.5.160] - 2022-08-22
+
+- Bump Dependencies, no new feature
 
 ## [1.4.156] - 2022-06-02
 
@@ -16,7 +41,7 @@ All change except updating data will be noted here
 
 - Add History (in /statistics)
 
-- Finally, *RESPONSIVE* across mobile and various screen sizes is now properly implemented! ✨✨✨
+- Finally, _RESPONSIVE_ across mobile and various screen sizes is now properly implemented! ✨✨✨
 
 ## [1.3.116] - 2022-05-18
 

@@ -23,7 +23,7 @@ export function resetStorage() {
 }
 
 function migration_hook() {
-  if (localStorage.getItem(keys.saveVersion) != saveVersion) {
+  if (localStorage.getItem(keys.saveVersion) !== saveVersion) {
     // * No migrations implemented yet
     resetStorage();
   }
@@ -57,7 +57,7 @@ export function getAllResults() {
   if (!cachedResults) {
     migration_hook();
     cachedResults = JSON.parse(
-      localStorage.getItem(keys.history) || "[]"
+      localStorage.getItem(keys.history) || "[]",
     ) as PlayResult[];
   }
 
@@ -68,7 +68,7 @@ export function computeScore(questions: Question[], key: boolean[][]) {
   let correct = 0;
   for (let i = 0; i < 4; i++) {
     for (let j = 0; j < 4; j++) {
-      if (questions[4 * i + j].answer == key[i][j]) {
+      if (questions[4 * i + j].answer === key[i][j]) {
         correct += 1;
       }
     }

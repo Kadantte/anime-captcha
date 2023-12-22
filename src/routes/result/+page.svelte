@@ -1,13 +1,9 @@
-<script lang="ts" context="module">
-  export const prerender = false;
-</script>
-
 <script lang="ts">
   import { onMount } from "svelte";
 
   import { goto } from "$app/navigation";
   import { page } from "$app/stores";
-  import { type PlayResult, getResultsByID } from "$lib/storage";
+  import { getResultsByID, type PlayResult } from "$lib/storage";
 
   let play: PlayResult | undefined;
 
@@ -17,7 +13,7 @@
 </script>
 
 {#if play}
-  {#if play.score == 16}
+  {#if play.score === 16}
     <h1>Congrats! You are not a Robot!</h1>
     <h2>
       You completed "{play.dataset.title.replace(/<[^>]+>/g, " ").trim()}"

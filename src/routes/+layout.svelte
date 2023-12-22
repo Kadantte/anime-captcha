@@ -1,13 +1,32 @@
 <script lang="ts">
   import "../app.scss";
 
+  import { onMount } from "svelte";
+
+  import { dev } from "$app/environment";
   import { page } from "$app/stores";
   import GitHub from "$icons/GitHub.svelte";
   import ext from "$lib/ext";
   import { elapsedFrom } from "$lib/time";
 
   import { BuildTime, Version } from "../config.g";
+
+  onMount(() => {
+    if (dev) return;
+
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./sw.js", { scope: "./" });
+    }
+  });
 </script>
+
+<svelte:head>
+  <title>Anime Captcha</title>
+  <meta
+    name="description"
+    content="Just a Normal Captcha, you are not a robot? Then pass this Captcha!"
+  />
+</svelte:head>
 
 <main
   class="flex min-h-[calc(100vh-8rem)] flex-col items-center justify-center gap-4 px-2 pb-6 text-center sm:min-h-[calc(100vh-4rem)]"

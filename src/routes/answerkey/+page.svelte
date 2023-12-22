@@ -1,7 +1,3 @@
-<script lang="ts" context="module">
-  export const prerender = false;
-</script>
-
 <script lang="ts">
   import { onMount } from "svelte";
 
@@ -9,7 +5,7 @@
   import { page } from "$app/stores";
   import Label from "$components/Label.svelte";
   import Check from "$icons/Check.svelte";
-  import { type PlayResult, getResultsByID } from "$lib/storage";
+  import { getResultsByID, type PlayResult } from "$lib/storage";
 
   let play: PlayResult | undefined;
 
@@ -40,7 +36,7 @@
     <tbody>
       {#each play.dataset.questions as question, index}
         <tr
-          class={question.answer == answerAtIndex(index)
+          class={question.answer === answerAtIndex(index)
             ? "bg-green-100"
             : "bg-red-100"}
         >

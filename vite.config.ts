@@ -2,21 +2,11 @@ import { sveltekit } from "@sveltejs/kit/vite";
 import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
 
-import path from "node:path";
-
-const generatedAliases = {} as { [key: string]: string };
-
-["components", "data", "icons", "sections", "styles"].map(
-  (ele) => (generatedAliases[`\$${ele}`] = path.resolve(`src/${ele}`))
-);
-
 export default defineConfig({
-  resolve: {
-    alias: generatedAliases,
-  },
   plugins: [
     sveltekit(),
     VitePWA({
+      injectRegister: null,
       registerType: "autoUpdate",
       manifest: {
         name: "Anime Captcha",
